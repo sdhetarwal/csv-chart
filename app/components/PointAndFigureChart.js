@@ -13,13 +13,13 @@ const PointAndFigureChart = ({ tick }) => {
   const [boxSizeY, setBoxSizeY] = useState(4);
   const [boxSizeX, setBoxSizeX] = useState(1.2);
   const [lotSize, setLotSize] = useState(100);
+  const [itemsPerPage, setitemsPerPage] = useState(400);
   const [totalBuyVolume, setTotalBuyVolume] = useState(0);
   const [totalSellVolume, setTotalSellVolume] = useState(0);
   const [totalNullVolume, setTotalNullVolume] = useState(0);
   const [buyTicks, setBuyTicks] = useState(0);
   const [sellTicks, setSellTicks] = useState(0);
-  const [page, setPage] = useState(1);
-  const itemsPerPage = 160; // Number of items per page
+  const [page, setPage] = useState(1); // Number of items per page
 
   const [previousOpenInterest, setPreviousOpenInterest] = useState(null);
   const [openInterestDiff, setOpenInterestDiff] = useState(0);
@@ -28,11 +28,10 @@ const PointAndFigureChart = ({ tick }) => {
   const [totalTicks, setTotalTicks] = useState(0); // Total ticks state
   const [buyVol, setBuyVol] = useState(0); // Buy volume state
   const [sellVol, setSellVol] = useState(0);
-  const maxDataLength = 800; // Maximum data length to keep track of
+  const maxDataLength = 3000; // Maximum data length to keep track of
   const totalPages = Math.ceil(dataRef.current.length / itemsPerPage); // Total number of pages
   const [totalBuyStrides, setTotalBuyStrides] = useState(0);
   const [totalSellStrides, setTotalSellStrides] = useState(0);
-
     const [isHidden, setIsHidden] = useState(false);
 
     const toggleVisibility = () => {setIsHidden(!isHidden)};
@@ -300,6 +299,12 @@ const PointAndFigureChart = ({ tick }) => {
               placeholder="lotsize"
               onChange={(e) => setLotSize(Number(e.target.value))}
             />
+            <input
+              className="border border-black p-1 max-w-10 text-sm"
+              value={itemsPerPage}
+              placeholder="Items per page"
+              onChange={(e) => setitemsPerPage(Number(e.target.value))}
+            />
           </div>
           {/* Pagination buttons */}
           <div className="flex justify-between mt-1">
@@ -324,8 +329,8 @@ const PointAndFigureChart = ({ tick }) => {
         </div>
       </DraggableDiv>}
       <div
-        className="flex overflow--x-scroll font-bold"
-        style={{ width: "2400px", height: "4600px" }}
+        className="flex overflow-x-scroll"
+        style={{ width: "8000px", height: "8000px" }}
       >
         <svg ref={svgRef}></svg>
       </div>

@@ -22,7 +22,7 @@ const Home = () => {
       <FileUpload   setData={setData} />
 
         <button
-          className="lg:px-4 p-1 bg-blue-500 text-white text-xs lg:text-lg rounded-lg shadow hover:bg-blue-600 transition duration-200"
+          className="lg:px-4 p-1 absolute  right-0 top-1/2 bg-blue-500 text-white text-xs lg:text-lg rounded-lg shadow hover:bg-blue-600 transition duration-200"
           onClick={handleNext}
         >
           Next
