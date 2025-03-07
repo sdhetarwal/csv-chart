@@ -10,7 +10,7 @@ const PointAndFigureChart = ({ tick }) => {
  // console.log('Data to render:', dataRef.current);
 
   const [value, setValue] = useState(1);
-  const [boxSizeY, setBoxSizeY] = useState(4);
+  const [boxSizeY, setBoxSizeY] = useState(3);
   const [boxSizeX, setBoxSizeX] = useState(1.2);
   const [lotSize, setLotSize] = useState(100);
   const [itemsPerPage, setitemsPerPage] = useState(400);
@@ -46,32 +46,23 @@ const PointAndFigureChart = ({ tick }) => {
         g.append("text")
           .attr("x", x)
           .attr("y", y)
-          .style("font-size", "14px")
+          .style("font-size", "10px")
           .style("fill", color)
           .text(last_traded_quantity);
       };
 
       const render = () => {
         svg.selectAll("*").remove();
-        const svgHeight = svgRef.current.clientHeight;
+
         const g = svg.append("g").attr("transform", "translate(50,50)");
         const startingPrice = dataRef.current[0]?.lp;
        // Map prices to vertical positions in the chart area
-       const zoom = d3.zoom()
-       .scaleExtent([1, 5])
-       .translateExtent([[0, 0], [svgWidth, svgHeight]])
-       .on("zoom", (event) => {
-         g.attr("transform", event.transform);
-       });
 
-     svg.call(zoom);
         // Create the Y-axis
        // const g = svg.append("g").attr("transform", "translate(50, 0)"); // Ensure proper alignment
 
         let x = 0;
         let y = svgRef.current.clientHeight / 2;
-
-
         let direction = 1;
         let currentColumn = [];
         let difference = 0;
