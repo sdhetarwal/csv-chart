@@ -57,7 +57,14 @@ const PointAndFigureChart = ({ tick }) => {
         const g = svg.append("g").attr("transform", "translate(50,50)");
         const startingPrice = dataRef.current[0]?.lp;
        // Map prices to vertical positions in the chart area
+       const zoom = d3.zoom()
+       .scaleExtent([1, 5])
+       .translateExtent([[0, 0], [svgWidth, svgHeight]])
+       .on("zoom", (event) => {
+         g.attr("transform", event.transform);
+       });
 
+     svg.call(zoom);
         // Create the Y-axis
        // const g = svg.append("g").attr("transform", "translate(50, 0)"); // Ensure proper alignment
 
@@ -273,34 +280,34 @@ const PointAndFigureChart = ({ tick }) => {
           {/* Display totalVolume */}
           <div className="flex flex-row">
             <input
-              className="rounded-sm max-w-10 border border-black p-1 text-base"
+              className="rounded-sm max-w-10 border border-black lg:p-1 text-base"
               type="number"
               value={value}
               placeholder="value greater than"
               onChange={(e) => setValue(Number(e.target.value))}
             />
             <input
-              className="border border-black p-1 max-w-10 text-sm"
+              className="border border-black lg:p-1 max-w-10 text-sm"
               value={boxSizeY}
               placeholder="yaxis"
               type="number"
               onChange={(e) => setBoxSizeY(Number(e.target.value))}
             />
             <input
-              className="border border-black p-1 max-w-10 text-sm"
+              className="border border-black lg:p-1 max-w-10 text-sm"
               value={boxSizeX}
 
               placeholder="xaxis"
               onChange={(e) => setBoxSizeX(Number(e.target.value))}
             />
             <input
-              className="border border-black p-1 max-w-10 text-sm"
+              className="border border-black lg:p-1 max-w-10 text-sm"
               value={lotSize}
               placeholder="lotsize"
               onChange={(e) => setLotSize(Number(e.target.value))}
             />
             <input
-              className="border border-black p-1 max-w-10 text-sm"
+              className="border border-black lg:p-1 max-w-10 text-sm"
               value={itemsPerPage}
               placeholder="Items per page"
               onChange={(e) => setitemsPerPage(Number(e.target.value))}
@@ -309,7 +316,7 @@ const PointAndFigureChart = ({ tick }) => {
           {/* Pagination buttons */}
           <div className="flex justify-between mt-1">
             <button
-              className="border border-black p-1"
+              className="border border-black lg:p-1"
               onClick={handlePrevPage}
               disabled={page === 1}
             >
@@ -319,7 +326,7 @@ const PointAndFigureChart = ({ tick }) => {
               Page {page} of {totalPages}
             </span>
             <button
-              className="border border-black p-1"
+              className="border border-black lg:p-1"
               onClick={handleNextPage}
               disabled={page === totalPages}
             >
