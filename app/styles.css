@@ -1,0 +1,26 @@
+.next-button-wrapper {
+    position: fixed; /* Fixes the position relative to the viewport */
+    top: 50%; /* Centers vertically on the screen */
+    right: 20px; /* Keeps it slightly away from the right edge */
+    transform: translateY(-50%); /* Adjusts for proper centering */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensures it stays above other elements */
+}
+
+.next-button-wrapper button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.next-button-wrapper button:hover {
+    background-color: #0056b3;
+}
