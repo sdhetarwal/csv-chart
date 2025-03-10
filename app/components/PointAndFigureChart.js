@@ -229,14 +229,14 @@ const PointAndFigureChart = ({ tick }) => {
           {isHidden ? 'Show' : 'Hide'}
         </button></DraggableDiv>
         {!isHidden&& <DraggableDiv>
-        <div className="flex space-y-0 font-bold text-xs flex-col">
+        <div className="flex space-y-0 font-bold text-xs  flex-col">
           <p>Buy Price : {tick.lp}</p>
           <p>Buy volume : {totalBuyVolume}</p>
           <p>Sell volume : {totalSellVolume}</p>
           <p style={{ color: getColor(totalBuyVolume - totalSellVolume) }}>
             Total difference volume : {totalBuyVolume - totalSellVolume}
           </p>
-          <p>Null volume : {totalNullVolume}</p>
+          <p>Null volume : {tick.last_traded_quantity}</p>
           <p
             style={{
               color: getColor(
