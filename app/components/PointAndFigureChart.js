@@ -13,7 +13,7 @@ const PointAndFigureChart = ({ tick }) => {
   const [boxSizeY, setBoxSizeY] = useState(3);
   const [boxSizeX, setBoxSizeX] = useState(1.2);
   const [lotSize, setLotSize] = useState(100);
-  const [itemsPerPage, setitemsPerPage] = useState(400);
+  const [itemsPerPage, setitemsPerPage] = useState(800);
   const [totalBuyVolume, setTotalBuyVolume] = useState(0);
   const [totalSellVolume, setTotalSellVolume] = useState(0);
   const [totalNullVolume, setTotalNullVolume] = useState(0);
@@ -28,7 +28,7 @@ const PointAndFigureChart = ({ tick }) => {
   const [totalTicks, setTotalTicks] = useState(0); // Total ticks state
   const [buyVol, setBuyVol] = useState(0); // Buy volume state
   const [sellVol, setSellVol] = useState(0);
-  const maxDataLength = 3000; // Maximum data length to keep track of
+  const maxDataLength = 6000; // Maximum data length to keep track of
   const totalPages = Math.ceil(dataRef.current.length / itemsPerPage); // Total number of pages
   const [totalBuyStrides, setTotalBuyStrides] = useState(0);
   const [totalSellStrides, setTotalSellStrides] = useState(0);

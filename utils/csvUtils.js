@@ -13,7 +13,6 @@ export function parseCSV(file, callback) {
 
 export function invertData(data) {
     const keys = Object.keys(data[0]); // Extract headers (e.g., time, lp, last_traded_quantity)
-console.log(keys)
     // Map each key (header) to collect its corresponding values as columns
     const invertedData = keys.map((key) => data.map((row) => row[key]));
 
